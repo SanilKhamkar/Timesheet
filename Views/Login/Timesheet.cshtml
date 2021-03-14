@@ -1,0 +1,50 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Timesheet Page";
+}
+
+@Scripts.Render("~/bundles/clock")
+@Scripts.Render("~/Scripts/Clock.js")
+
+<script>
+    function DiplayClock() {
+        var currentTime = updateClock();
+        document.getElementById("clock").firstChild.nodeValue = currentTime;
+    }
+</script>
+
+<body onload="DiplayClock(); setInterval('DiplayClock()', 1000);">
+</body>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Welcome</h2>
+        <p>Employee Name: <b>@HttpContext.Current.Session["Username"]</b></p>
+        <p>Current Time:</p>
+        <div class="date-time">
+            <h2><span id="clock">&nbsp;</span></h2>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <h2>Employee Punch-In</h2>
+        <p><a class="btn btn-default" id="punchin" value="mango" href="@Url.Action("Punchin", "Timesheet")">Punch In &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Employee Punch-Out</h2>
+        <p><a class="btn btn-default" id="punchout" href="@Url.Action("Punchout", "Timesheet")">Punch out &raquo;</a></p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Logout</h2>
+        <p><a class="btn btn-default" id="logout" href="@Url.Action("Logout", "Login")">Logout &raquo;</a></p>
+    </div>
+</div>
+
+
+
+

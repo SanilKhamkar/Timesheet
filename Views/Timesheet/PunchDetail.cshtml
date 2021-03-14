@@ -1,0 +1,35 @@
+﻿@model emptime.Models.Punch
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Notification";
+}
+
+
+<h2> Notification </h2>
+
+@{
+    if (Model.punchin == "punchin")
+    {
+        <p>You have been Punched In. An email notification has been sent to you.</p>
+    }
+    else if (Model.punchout == "punchout")
+    {
+        <p>You have been Punched Out. An email notification has been sent to you.</p>
+    }
+    else
+    {
+        <p>Something went wrong. Please try again</p>
+        <div>
+            @Html.ActionLink("Back to Login", "LoginPage", "Login")
+        </div>
+    }
+}
+
+<div>
+    @Html.ActionLink("Back to Timesheet", "Timesheet", "Login")
+</div>
+
